@@ -15,26 +15,23 @@ const App = () => {
 
   // ping();
 
-  const [coins, setCoins] = useState([]);
+  const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    async function getCoins() {
+    async function getData() {
       const res = await fetch(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10",
-        { headers: { "x-cg-demo-api-key": import.meta.env.VITE_API_KEY } },
+        "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2024-01-01&endtime=2024-01-02&minmagnitude=5",
       );
       const data = await res.json();
-      setCoins(data);
+      setDatas(data.features);
     }
-    getCoins();
+    getData();
   }, []);
 
   return (
     <ul>
-      {coins.map((coin) => (
-        <li key={coin.id}>
-          {coin.name}: ${coin.current_price}
-        </li>
+      {datas.map((data) => (
+        <li key={data.id}>{data.properties.place}</li>
       ))}
     </ul>
   );
