@@ -1,5 +1,5 @@
 const App = () => {
-  return <div>Buat ijoin github</div>;
+  return <div> </div>;
 };
 
 export default App;
