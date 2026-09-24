@@ -20,19 +20,21 @@ const App = () => {
   useEffect(() => {
     async function getData() {
       const res = await fetch(
-        "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2024-01-01&endtime=2024-01-02&minmagnitude=5",
+        "http://www.omdbapi.com/?i=tt3896198&apikey=2665a8bc",
       );
       const data = await res.json();
-      setDatas(data.features);
+      setDatas(data);
     }
     getData();
   }, []);
 
   return (
     <ul>
-      {datas.map((data) => (
-        <li key={data.id}>{data.properties.place}</li>
-      ))}
+      {/* {datas.map((data) => (
+        <li key={data.id}>{data.Title}</li>
+      ))} */}
+
+      {datas.Title}
     </ul>
   );
 };
